@@ -9,20 +9,29 @@
 <body <?php body_class(); ?>>
 <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
 
-<?php if ( get_theme_mod('semantic_wp_topbar_enable') ) : ?>
-<div class="site-topbar d-flex align-items-center px-3" style="background-color: var(--semantic-topbar-color); height: 50px;">
-    <?php if (get_theme_mod('semantic_wp_topbar_bg')) : ?>
-        <div class="topbar-logo me-2" style="background-image: var(--semantic-topbar-bg); background-size: contain; background-repeat: no-repeat; width: 40px; height: 40px;"></div>
+<?php if ( get_theme_mod('semantic_wp_topbar_enable') ) : 
+    $topbar_text = get_theme_mod('semantic_wp_topbar_text', 'Sitio Oficial');
+    $topbar_link = get_theme_mod('semantic_wp_topbar_link');
+    $topbar_bg   = get_theme_mod('semantic_wp_topbar_bg');
+?>
+<div class="site-topbar d-flex align-items-center px-3">
+    <?php if ( $topbar_bg ) : ?>
+        <div class="topbar-logo me-2"></div>
     <?php endif; ?>
-    <div class="topbar-text" style="color: #fff; font-weight: bold;">
-        <?php echo esc_html(get_theme_mod('semantic_wp_topbar_text', 'Sitio Oficial')); ?>
+
+    <div class="topbar-text">
+        <?php if ( $topbar_link ) : ?>
+            <a href="<?php echo esc_url($topbar_link); ?>" class="topbar-link"><?php echo esc_html($topbar_text); ?></a>
+        <?php else: ?>
+            <?php echo esc_html($topbar_text); ?>
+        <?php endif; ?>
     </div>
 </div>
 <?php endif; ?>
 
 <header class="site-header">
     <div class="container d-flex justify-content-between align-items-center py-2">
-        <h1 class="site-title m-0" style="font-size: 1.5rem;">
+        <h1 class="site-title m-0">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo" title="<?php bloginfo('name'); ?>">
                 <span class="visually-hidden"><?php bloginfo('name'); ?></span>
             </a>
@@ -40,6 +49,7 @@
                 'container_class' => 'collapse navbar-collapse',
                 'menu_class' => 'navbar-nav ms-auto',
                 'fallback_cb' => false,
+                'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
             ]);
             ?>
         </nav>

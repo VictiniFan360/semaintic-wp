@@ -1,6 +1,7 @@
 <?php
 /**
  * Semantic WP – Functions
+ * Tema semántico, accesible y personalizable
  */
 
 function semantic_wp_setup() {
@@ -14,43 +15,84 @@ function semantic_wp_setup() {
 add_action('after_setup_theme', 'semantic_wp_setup');
 
 function semantic_wp_assets() {
-    wp_enqueue_style('semantic-wp-base', get_stylesheet_uri(), [], null);
-    wp_enqueue_style('semantic-wp-main', get_template_directory_uri() . '/css/main.css', ['semantic-wp-base'], null);
-    wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css', [], null);
+    wp_enqueue_style(
+        'semantic-wp-base',
+        get_stylesheet_uri(),
+        [],
+        null
+    );
+    wp_enqueue_style(
+        'semantic-wp-main',
+        get_template_directory_uri() . '/css/main.css',
+        ['semantic-wp-base'],
+        null
+    );
+    wp_enqueue_style(
+        'bootstrap',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
+        [],
+        null
+    );
 
-    wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', [], null, true);
+    wp_enqueue_script(
+        'bootstrap',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js',
+        [],
+        null,
+        true
+    );
 }
 add_action('wp_enqueue_scripts', 'semantic_wp_assets');
 
 function semantic_wp_widgets() {
     register_sidebar([
-        'name' => __('Footer', 'semantic-wp'),
-        'id' => 'footer-widget',
+        'name'          => __('Footer', 'semantic-wp'),
+        'id'            => 'footer-widget',
         'before_widget' => '<section class="footer-widget">',
-        'after_widget' => '</section>',
-        'before_title' => '<h2 class="footer-widget-title">',
-        'after_title' => '</h2>',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="footer-widget-title">',
+        'after_title'   => '</h2>',
     ]);
 }
 add_action('widgets_init', 'semantic_wp_widgets');
 
 function semantic_wp_customize($wp_customize) {
     $wp_customize->add_setting('semantic_wp_logo');
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'semantic_wp_logo', [
-        'label' => __('Logo', 'semantic-wp'),
-        'section' => 'title_tagline',
-    ]));
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'semantic_wp_logo',
+            [
+                'label' => __('Logo', 'semantic-wp'),
+                'section' => 'title_tagline',
+            ]
+        )
+    );
     $wp_customize->add_setting('semantic_wp_header_color', ['default' => '#241F31']);
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'semantic_wp_header_color', [
-        'label' => __('Color del Header', 'semantic-wp'),
-        'section' => 'colors',
-    ]));
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'semantic_wp_header_color',
+            [
+                'label' => __('Color del Header', 'semantic-wp'),
+                'section' => 'colors',
+            ]
+        )
+    );
     $wp_customize->add_setting('semantic_wp_footer_color', ['default' => '#241F31']);
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'semantic_wp_footer_color', [
-        'label' => __('Color del Footer', 'semantic-wp'),
-        'section' => 'colors',
-    ]));
-    $wp_customize->add_setting('semantic_wp_font_family', ['default' => 'Helvetica, Helvetica Neue, Arial, DejaVu Sans, Ubuntu, sans-serif']);
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'semantic_wp_footer_color',
+            [
+                'label' => __('Color del Footer', 'semantic-wp'),
+                'section' => 'colors',
+            ]
+        )
+    );
+    $wp_customize->add_setting('semantic_wp_font_family', [
+        'default' => 'Helvetica, Helvetica Neue, Arial, DejaVu Sans, Ubuntu, sans-serif',
+    ]);
     $wp_customize->add_control('semantic_wp_font_family', [
         'label' => __('Fuente del sitio', 'semantic-wp'),
         'section' => 'colors',
@@ -64,11 +106,16 @@ function semantic_wp_customize($wp_customize) {
         ],
     ]);
     $wp_customize->add_setting('semantic_wp_background_image');
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'semantic_wp_background_image', [
-        'label' => __('Imagen de fondo fija', 'semantic-wp'),
-        'section' => 'colors',
-    ]));
-
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'semantic_wp_background_image',
+            [
+                'label' => __('Imagen de fondo fija', 'semantic-wp'),
+                'section' => 'colors',
+            ]
+        )
+    );
     $wp_customize->add_setting('semantic_wp_background_area', ['default' => 'none']);
     $wp_customize->add_control('semantic_wp_background_area', [
         'label' => __('Imagen de fondo en:', 'semantic-wp'),
@@ -81,31 +128,56 @@ function semantic_wp_customize($wp_customize) {
             'footer' => __('Footer', 'semantic-wp'),
         ],
     ]);
-    $wp_customize->add_setting('semantic_wp_topbar_enable', ['default' => false]);
+    $wp_customize->add_setting('semantic_wp_topbar_enable', ['default' => true]);
     $wp_customize->add_control('semantic_wp_topbar_enable', [
         'label' => __('Mostrar TopBar', 'semantic-wp'),
-        'section' => 'colors',
+        'section' => 'title_tagline',
         'type' => 'checkbox',
     ]);
 
     $wp_customize->add_setting('semantic_wp_topbar_text', ['default' => 'Sitio Oficial']);
     $wp_customize->add_control('semantic_wp_topbar_text', [
-        'label' => __('Texto TopBar', 'semantic-wp'),
-        'section' => 'colors',
+        'label' => __('Texto del TopBar', 'semantic-wp'),
+        'section' => 'title_tagline',
         'type' => 'text',
     ]);
 
-    $wp_customize->add_setting('semantic_wp_topbar_bg');
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'semantic_wp_topbar_bg', [
-        'label' => __('Imagen de fondo TopBar (Escudo/Logo)', 'semantic-wp'),
-        'section' => 'colors',
-    ]));
+    $wp_customize->add_setting('semantic_wp_topbar_link', ['default' => '']);
+    $wp_customize->add_control('semantic_wp_topbar_link', [
+        'label' => __('Link del TopBar (opcional)', 'semantic-wp'),
+        'section' => 'title_tagline',
+        'type' => 'url',
+    ]);
 
     $wp_customize->add_setting('semantic_wp_topbar_color', ['default' => '#003366']);
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'semantic_wp_topbar_color', [
-        'label' => __('Color del TopBar', 'semantic-wp'),
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'semantic_wp_topbar_color',
+            [
+                'label' => __('Color de fondo del TopBar', 'semantic-wp'),
+                'section' => 'colors',
+            ]
+        )
+    );
+
+    $wp_customize->add_setting('semantic_wp_topbar_bg');
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'semantic_wp_topbar_bg',
+            [
+                'label' => __('Imagen de fondo del TopBar', 'semantic-wp'),
+                'section' => 'title_tagline',
+            ]
+        )
+    );
+    $wp_customize->add_setting('semantic_wp_allow_user_background', ['default' => false]);
+    $wp_customize->add_control('semantic_wp_allow_user_background', [
+        'label' => __('Permitir que el visitante elija el fondo', 'semantic-wp'),
         'section' => 'colors',
-    ]));
+        'type' => 'checkbox',
+    ]);
     $wp_customize->add_setting('semantic_wp_copyright_text', ['default' => get_bloginfo('name')]);
     $wp_customize->add_control('semantic_wp_copyright_text', [
         'label' => __('Texto del copyright', 'semantic-wp'),
@@ -113,6 +185,7 @@ function semantic_wp_customize($wp_customize) {
     ]);
 }
 add_action('customize_register', 'semantic_wp_customize');
+
 function semantic_wp_customizer_css() {
     $header_color = get_theme_mod('semantic_wp_header_color', '#241F31');
     $footer_color = get_theme_mod('semantic_wp_footer_color', '#241F31');
@@ -121,19 +194,17 @@ function semantic_wp_customizer_css() {
     $bg_area = get_theme_mod('semantic_wp_background_area', 'none');
     $font_family = get_theme_mod('semantic_wp_font_family', 'Helvetica, Helvetica Neue, Arial, DejaVu Sans, Ubuntu, sans-serif');
 
-    $topbar_enable = get_theme_mod('semantic_wp_topbar_enable', false);
-    $topbar_bg = get_theme_mod('semantic_wp_topbar_bg');
     $topbar_color = get_theme_mod('semantic_wp_topbar_color', '#003366');
+    $topbar_bg = get_theme_mod('semantic_wp_topbar_bg');
 
     echo '<style>:root{';
     echo '--semantic-header-color:' . esc_attr($header_color) . ';';
     echo '--semantic-footer-color:' . esc_attr($footer_color) . ';';
     echo '--semantic-font-family:' . esc_attr($font_family) . ';';
-    echo '--semantic-topbar-enable:' . ($topbar_enable ? '1' : '0') . ';';
-    echo '--semantic-topbar-color:' . esc_attr($topbar_color) . ';';
     if ($logo) echo '--semantic-logo:url(' . esc_url($logo) . ');';
     if ($bg_image) echo '--semantic-bg-image:url(' . esc_url($bg_image) . ');';
     if ($topbar_bg) echo '--semantic-topbar-bg:url(' . esc_url($topbar_bg) . ');';
+    echo '--semantic-topbar-color:' . esc_attr($topbar_color) . ';';
     echo '}</style>';
 
     if ($bg_image && $bg_area !== 'none') {
@@ -152,3 +223,18 @@ function semantic_wp_posts_per_page($query) {
     }
 }
 add_action('pre_get_posts', 'semantic_wp_posts_per_page');
+
+function semantic_wp_background_presets() {
+    return [
+        'abstract' => ['label' => __('Abstracto', 'semantic-wp'), 'image' => get_template_directory_uri() . '/assets/bg-abstract.jpg'],
+        'nature' => ['label' => __('Naturaleza', 'semantic-wp'), 'image' => get_template_directory_uri() . '/assets/bg-nature.jpg'],
+        'dark' => ['label' => __('Oscuro', 'semantic-wp'), 'image' => get_template_directory_uri() . '/assets/bg-dark.jpg'],
+    ];
+}
+function semantic_wp_background_data() {
+    wp_localize_script('semantic-wp-backgrounds', 'SemanticWPBackgrounds', [
+        'allowed' => get_theme_mod('semantic_wp_allow_user_background'),
+        'presets' => semantic_wp_background_presets(),
+    ]);
+}
+add_action('wp_enqueue_scripts', 'semantic_wp_background_data');

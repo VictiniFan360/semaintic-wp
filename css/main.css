@@ -107,3 +107,97 @@ body {
 .site-footer {
     font-family: inherit;
 }
+
+.site-topbar {
+    background-color: var(--semantic-topbar-color);
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.topbar-logo {
+    width: 40px;
+    height: 40px;
+    background-image: var(--semantic-topbar-bg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.topbar-text {
+    color: #fff;
+    font-weight: bold;
+}
+
+.topbar-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.site-topbar {
+    background-color: var(--semantic-topbar-color);
+    height: 50px;
+}
+
+.topbar-logo {
+    width: 40px;
+    height: 40px;
+    background-image: var(--semantic-topbar-bg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.topbar-text {
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.topbar-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.site-topbar {
+    height: 50px;
+    background-color: var(--semantic-topbar-color);
+    color: #fff;
+    font-weight: bold;
+}
+
+.topbar-logo {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+<?php if ( get_theme_mod('semantic_wp_topbar_bg') ) : ?>
+.topbar-logo {
+    background-image: url('<?php echo esc_url(get_theme_mod('semantic_wp_topbar_bg')); ?>');
+}
+<?php endif; ?>
+
+.topbar-text {
+    display: flex;
+    align-items: center;
+}
+
+.topbar-link {
+    color: #fff;
+    text-decoration: underline;
+}
+#menu-principal {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    display: flex;
+}
+
+#menu-principal > li {
+    margin-right: 1rem;
+}
+
+#menu-principal > li > a {
+    text-decoration: none;
+    color: inherit;
+}
