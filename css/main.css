@@ -1,0 +1,109 @@
+:root {
+    --header-color: #241F31;
+    --footer-color: #241F31;
+}
+
+.site-header,
+.site-footer {
+    background-color: var(--header-color);
+    color: #ffffff;
+}
+
+.site-logo {
+    display: inline-block;
+    width: 180px;
+    height: 60px;
+    background-image: url('../assets/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Accesibilidad */
+a:focus,
+button:focus {
+    outline: 0.5px dotted #ffffff;
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+/* Utilidades */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.site-header {
+    background-color: var(--semantic-header-color, #241F31);
+}
+
+.site-footer {
+    background-color: var(--semantic-footer-color, #241F31);
+}
+
+.site-logo {
+    display: inline-block;
+    width: 180px;
+    height: 60px;
+    background-image: var(--semantic-logo);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body {
+    background-image: none;
+}
+
+.site-header,
+.site-footer {
+    background-image: none;
+}
+
+/* Aplicación dinámica */
+:root {
+    --semantic-bg-image: none;
+    --semantic-bg-area: none;
+}
+
+body {
+    background-image: 
+        calc(var(--semantic-bg-area) == body) 
+        ? var(--semantic-bg-image) 
+        : none;
+}
+
+body.has-bg-body {
+    background-image: var(--semantic-bg-image);
+    background-size: cover;
+}
+
+.site-header.has-bg-header {
+    background-image: var(--semantic-bg-image);
+}
+
+.site-footer.has-bg-footer {
+    background-image: var(--semantic-bg-image);
+}
+
+body {
+    font-family: var(
+        --semantic-font-family,
+        Helvetica, Helvetica Neue, Arial, DejaVu Sans, Ubuntu, sans-serif
+    );
+}
+
+.site-header,
+.site-footer {
+    font-family: inherit;
+}
