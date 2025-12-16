@@ -21,8 +21,10 @@
 
     <div class="topbar-text">
         <?php if ( $topbar_link ) : ?>
-            <a href="<?php echo esc_url($topbar_link); ?>" class="topbar-link"><?php echo esc_html($topbar_text); ?></a>
-        <?php else: ?>
+            <a href="<?php echo esc_url($topbar_link); ?>" class="topbar-link">
+                <?php echo esc_html($topbar_text); ?>
+            </a>
+        <?php else : ?>
             <?php echo esc_html($topbar_text); ?>
         <?php endif; ?>
     </div>
@@ -31,28 +33,38 @@
 
 <header class="site-header">
     <div class="container d-flex justify-content-between align-items-center py-2">
+
         <h1 class="site-title m-0">
-            <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo" title="<?php bloginfo('name'); ?>">
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
                 <span class="visually-hidden"><?php bloginfo('name'); ?></span>
             </a>
         </h1>
 
-        <nav class="site-navigation" aria-label="Menú principal">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="site-navigation navbar navbar-expand-lg navbar-light"
+             aria-label="Menú principal">
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu-principal"
+                    aria-controls="menu-principal"
+                    aria-expanded="false"
+                    aria-label="Abrir menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <?php
             wp_nav_menu([
                 'theme_location' => 'primary',
-                'menu_id' => 'menu-principal',
-                'container' => 'div',
-                'container_class' => 'collapse navbar-collapse',
-                'menu_class' => 'navbar-nav ms-auto',
-                'fallback_cb' => false,
-                'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                'menu_id'        => 'menu-principal',
+                'container'      => 'div',
+                'container_class'=> 'collapse navbar-collapse',
+                'menu_class'     => 'navbar-nav ms-auto',
+                'fallback_cb'    => false,
             ]);
             ?>
         </nav>
+
     </div>
 </header>
 
