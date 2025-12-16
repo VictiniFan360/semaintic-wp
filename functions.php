@@ -201,7 +201,7 @@ function semantic_wp_customizer_css() {
     echo '--semantic-header-color:' . esc_attr($header_color) . ';';
     echo '--semantic-footer-color:' . esc_attr($footer_color) . ';';
     echo '--semantic-font-family:' . esc_attr($font_family) . ';';
-    if ($logo) echo '--semantic-logo:url(' . esc_url($logo) . ');';
+    if ($logo) echo '--semantic-logo-bg:url(' . esc_url($logo) . ');';
     if ($bg_image) echo '--semantic-bg-image:url(' . esc_url($bg_image) . ');';
     if ($topbar_bg) echo '--semantic-topbar-bg:url(' . esc_url($topbar_bg) . ');';
     echo '--semantic-topbar-color:' . esc_attr($topbar_color) . ';';

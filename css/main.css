@@ -274,3 +274,172 @@ body {
     margin-top: auto;
     text-decoration: none;
 }
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    margin: 5px 0;
+}
+
+.menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+}
+
+@media (max-width: 992px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .menu-collapse {
+        width: 100%;
+    }
+}
+
+.menu-wrapper {
+    display: block;
+}
+
+.menu {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    margin: 5px 0;
+}
+
+@media (max-width: 992px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-wrapper {
+        width: 100%;
+    }
+
+    .menu {
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+}
+
+.menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+a[href$="pdf"]{
+	color:#005A9C;
+	background:url("assets/icono_pdf.gif") left no-repeat ; 
+	padding-left:23px;} 
+
+a[href$="docx"]{
+	color:#005A9C;
+	background:url("assets/word.png") left no-repeat ; 
+	padding-left:23px;} 
+
+a[href^="mailto"]{
+	color:#005A9C;
+	background:url("assets/icono_mail.png") left no-repeat; 
+	padding-left:23px;
+	} 
+
+.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
+.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    content: "×";
+    font-size: 24px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.logo-bg {
+    display: block;
+    width: 120px;
+    height: 48px;
+
+    background-image: var(--semantic-logo-bg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+}
+
+:root {
+    --semantic-logo-bg: url('../img/logo.png');
+}
+
+:root {
+    --semantic-logo-bg: url('<?php echo esc_url( get_theme_mod('semantic_wp_logo') ); ?>');
+}
+
+.logo-bg {
+    display: block;
+    width: 120px;
+    height: 48px;
+
+    background-image: var(--semantic-logo-bg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+}
