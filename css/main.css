@@ -390,17 +390,17 @@ body {
 
 a[href$="pdf"]{
 	color:#005A9C;
-	background:url("assets/icono_pdf.gif") left no-repeat ; 
+	background:url("../assets/icono_pdf.gif") left no-repeat ; 
 	padding-left:23px;} 
 
 a[href$="docx"]{
 	color:#005A9C;
-	background:url("assets/word.png") left no-repeat ; 
+	background:url("../assets/word.png") left no-repeat ; 
 	padding-left:23px;} 
 
 a[href^="mailto"]{
 	color:#005A9C;
-	background:url("assets/icono_mail.png") left no-repeat; 
+	background:url("../assets/icono_mail.png") left no-repeat; 
 	padding-left:23px;
 	}
 
