@@ -673,3 +673,50 @@ body {
 a {
     color: var(--semantic-link-color);
 }
+
+.site-topbar {
+    border-bottom: var(--semantic-topbar-underline);
+}
+
+.container {
+    max-width: 1100px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+.site-header {
+    margin-bottom: 1rem;
+}
+
+main.container {
+    margin-top: 1.5rem;
+}
+
+.single-post {
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+*, :after, :before {
+    box-sizing: inherit;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+
+    font-family: var(--semantic-font-family);
+}
