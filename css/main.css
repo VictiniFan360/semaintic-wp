@@ -129,7 +129,6 @@ body {
 }
 
 .topbar-link {
-    color: inherit;
     text-decoration: underline;
 }
 
@@ -154,7 +153,6 @@ body {
 }
 
 .topbar-link {
-    color: inherit;
     text-decoration: underline;
 }
 
@@ -199,7 +197,6 @@ body {
 
 #menu-principal > li > a {
     text-decoration: none;
-    color: inherit;
 }
 
 .skip-link {
@@ -780,6 +777,79 @@ body {
     text-decoration: var(--semantic-topbar-link-decoration);
 }
 
+.navbar-nav .current-menu-item > a,
+.navbar-nav .current-menu-ancestor > a,
+.navbar-nav .current-menu-parent > a {
+    color: var(--semantic-nav-active-color);
+}
+
+.navbar-nav .dropdown-menu .current-menu-item > a {
+    color: var(--semantic-nav-active-color);
+    background-color: rgba(0,0,0,0.05);
+}
+
+.navbar-nav .dropdown-menu .current-menu-item {
+    border-bottom: 2px solid var(--semantic-nav-active-color);
+}
 
 
+.navbar-nav .nav-item.dropdown > .nav-link {
+    transition: none;
+}
+
+.navbar-nav .nav-item.dropdown:hover > .nav-link {
+    color: #000;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu a {
+    color: #000;
+    background-color: var(--semantic-nav-hover-bg);
+    transition: none;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu a:hover {
+    text-decoration: underline;
+    color: #000;
+    background-color: var(--semantic-nav-hover-bg);
+}
+
+.navbar-nav .nav-item.dropdown:hover {
+    background-color: transparent;
+    transition: none;
+}
+
+.navbar-nav .nav-item.dropdown > .nav-link {
+    color: #000;
+}
+
+.navbar-nav .nav-item.dropdown:hover > .nav-link {
+    color: var(--semantic-nav-active-color);
+}
+
+.navbar-nav .nav-item.dropdown:hover {
+    background-color: var(--semantic-nav-hover-bg);
+}
+
+.navbar-nav .dropdown-menu a {
+    color: var(--semantic-nav-sublink-color);
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+    color: var(--semantic-nav-sublink-color);
+    background-color: transparent;
+}
+.navbar-nav .dropdown-menu .dropdown-item.active {
+    color: var(--semantic-nav-active-color);
+    background-color: var(--semantic-nav-hover-bg);
+}
+
+.navbar-nav > .nav-item > .nav-link {
+    color: var(--semantic-nav-link-color);
+}
+
+.navbar-nav *,
+.navbar-nav *::before,
+.navbar-nav *::after {
+    transition: none !important;
+}
 
