@@ -3,7 +3,9 @@
  * Semantic WP – Functions
  * Tema semántico, accesible y personalizable
  */
+
 function semantic_wp_setup() {
+
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
 
@@ -12,6 +14,7 @@ function semantic_wp_setup() {
     ]);
 }
 add_action('after_setup_theme', 'semantic_wp_setup');
+
 function semantic_wp_assets() {
 
     wp_enqueue_style(
@@ -41,6 +44,7 @@ function semantic_wp_assets() {
         ['semantic-wp-main'],
         wp_get_theme()->get('Version')
     );
+
     wp_enqueue_style(
         'bootstrap',
         get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.min.css',
@@ -55,6 +59,7 @@ function semantic_wp_assets() {
         '5.3.3',
         true
     );
+
     wp_enqueue_script(
         'semantic-personalize',
         get_template_directory_uri() . '/js/personalize.js',
@@ -64,6 +69,7 @@ function semantic_wp_assets() {
     );
 }
 add_action('wp_enqueue_scripts', 'semantic_wp_assets');
+
 function semantic_wp_widgets() {
 
     register_sidebar([
@@ -89,16 +95,15 @@ add_action('widgets_init', 'semantic_wp_widgets');
 function semantic_wp_customize($wp_customize) {
 
     $wp_customize->add_setting('semantic_wp_logo');
-    $wp_customize->add_control(
-        new WP_Customize_Image_Control(
-            $wp_customize,
-            'semantic_wp_logo',
-            [
-                'label'   => __('Logo', 'semantic-wp'),
-                'section' => 'title_tagline',
-            ]
-        )
-    );
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize,
+        'semantic_wp_logo',
+        [
+            'label'   => __('Logo', 'semantic-wp'),
+            'section' => 'title_tagline',
+        ]
+    ));
+
     $wp_customize->add_setting('semantic_wp_header_color', ['default' => '#241F31']);
     $wp_customize->add_setting('semantic_wp_footer_color', ['default' => '#241F31']);
     $wp_customize->add_setting('semantic_wp_link_color',   ['default' => '#005A9C']);
@@ -120,10 +125,8 @@ function semantic_wp_customize($wp_customize) {
         'semantic_wp_link_color',
         ['label' => __('Color de los links', 'semantic-wp'), 'section' => 'colors']
     ));
-    $wp_customize->add_setting('semantic_wp_font_family', [
-        'default' => 'system-ui, sans-serif',
-    ]);
 
+    $wp_customize->add_setting('semantic_wp_font_family', ['default' => 'system-ui, sans-serif']);
     $wp_customize->add_control('semantic_wp_font_family', [
         'label'   => __('Fuente del sitio', 'semantic-wp'),
         'section' => 'colors',
@@ -144,6 +147,13 @@ function semantic_wp_customize($wp_customize) {
     $wp_customize->add_setting('semantic_wp_topbar_underline', ['default' => true]);
     $wp_customize->add_control('semantic_wp_topbar_underline', [
         'label'   => __('Subrayado del TopBar', 'semantic-wp'),
+        'section' => 'title_tagline',
+        'type'    => 'checkbox',
+    ]);
+
+    $wp_customize->add_setting('semantic_wp_topbar_link_underline', ['default' => true]);
+    $wp_customize->add_control('semantic_wp_topbar_link_underline', [
+        'label'   => __('Subrayar link del TopBar', 'semantic-wp'),
         'section' => 'title_tagline',
         'type'    => 'checkbox',
     ]);
@@ -174,20 +184,25 @@ function semantic_wp_customize($wp_customize) {
         'semantic_wp_topbar_bg',
         ['label' => __('Imagen del TopBar', 'semantic-wp'), 'section' => 'title_tagline']
     ));
+
     $wp_customize->add_setting('semantic_wp_copyright_text', [
         'default' => get_bloginfo('name')
     ]);
-
     $wp_customize->add_control('semantic_wp_copyright_text', [
         'label'   => __('Texto del copyright', 'semantic-wp'),
         'section' => 'title_tagline',
     ]);
 }
 add_action('customize_register', 'semantic_wp_customize');
+
 function semantic_wp_customizer_css() {
 
-    $underline = get_theme_mod('semantic_wp_topbar_underline', true)
+    $topbar_border = get_theme_mod('semantic_wp_topbar_underline', true)
         ? '1px solid currentColor'
+        : 'none';
+
+    $topbar_link_decoration = get_theme_mod('semantic_wp_topbar_link_underline', true)
+        ? 'underline'
         : 'none';
 
     echo '<style>:root{';
@@ -196,25 +211,28 @@ function semantic_wp_customizer_css() {
     echo '--semantic-link-color:'   . esc_attr(get_theme_mod('semantic_wp_link_color')) . ';';
     echo '--semantic-font-family:'  . esc_attr(get_theme_mod('semantic_wp_font_family')) . ';';
     echo '--semantic-topbar-color:' . esc_attr(get_theme_mod('semantic_wp_topbar_color')) . ';';
-    echo '--semantic-topbar-underline:' . $underline . ';';
+    echo '--semantic-topbar-underline:' . $topbar_border . ';';
+    echo '--semantic-topbar-link-decoration:' . $topbar_link_decoration . ';';
 
     if ($logo = get_theme_mod('semantic_wp_logo')) {
         echo '--semantic-logo-bg:url(' . esc_url($logo) . ');';
     }
 
-    if ($topbar_bg = get_theme_mod('semantic_wp_topbar_bg')) {
-        echo '--semantic-topbar-bg:url(' . esc_url($topbar_bg) . ');';
+    if ($bg = get_theme_mod('semantic_wp_topbar_bg')) {
+        echo '--semantic-topbar-bg:url(' . esc_url($bg) . ');';
     }
 
     echo '}</style>';
 }
 add_action('wp_head', 'semantic_wp_customizer_css');
+
 function semantic_wp_posts_per_page($query) {
     if (!is_admin() && $query->is_main_query() && $query->is_archive()) {
         $query->set('posts_per_page', 9);
     }
 }
 add_action('pre_get_posts', 'semantic_wp_posts_per_page');
+
 function semantic_wp_recommended_posts($count = 4) {
 
     $recommended = new WP_Query([
@@ -251,4 +269,3 @@ function semantic_wp_recommended_posts($count = 4) {
         wp_reset_postdata();
     endif;
 }
-

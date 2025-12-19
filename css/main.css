@@ -720,3 +720,66 @@ body {
 
     font-family: var(--semantic-font-family);
 }
+
+.single-title,
+.page-title {
+    display: inline-block;
+
+    padding: 0.75rem 1.25rem;
+    margin: 0 0 2rem;
+
+    border-left: 6px solid var(--semantic-header-color);
+
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.2;
+
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.single-header,
+.page-header {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.topbar a {
+    color: inherit;
+    text-decoration: var(--semantic-topbar-link-decoration, underline);
+}
+
+.site-topbar .topbar-link {
+    text-decoration: var(--semantic-topbar-link-decoration);
+    color: var(--semantic-topbar-color);
+}
+
+.topbar-text.topbar-link,
+.topbar-link {
+    text-decoration: var(--semantic-topbar-link-decoration);
+    color: var(--semantic-topbar-color);
+}
+
+.site-topbar .topbar-link {
+    color: var(--semantic-topbar-color);
+    text-decoration: var(--semantic-topbar-link-decoration);
+}
+
+.site-topbar .topbar-text {
+    color: #ffffff;
+}
+
+.site-topbar .topbar-link {
+    color: #ffffff;
+    text-decoration: var(--semantic-topbar-link-decoration);
+}
+
+.site-topbar .topbar-link:hover,
+.site-topbar .topbar-link:focus {
+    color: #ffffff;
+    text-decoration: var(--semantic-topbar-link-decoration);
+}
+
+
+
+
