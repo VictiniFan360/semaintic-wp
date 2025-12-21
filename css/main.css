@@ -853,3 +853,141 @@ body {
     transition: none !important;
 }
 
+.site-footer {
+    padding: 3rem 0;
+    font-family: var(--semantic-font-family);
+}
+
+.site-footer a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-widgets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-widgets .widget {
+    flex: 1 1 200px;
+}
+
+.footer-widgets .widget h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+}
+
+.footer-widgets .widget ul li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .footer-widgets {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-widgets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer-widgets .widget {
+    flex: 1;          
+    min-width: 200px;
+}
+
+@media (max-width: 768px) {
+    .footer-widgets {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+.site-footer {
+    padding: 3rem 0;
+    background-color: var(--semantic-footer-color);
+    color: #ffffff;
+}
+
+.site-footer .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    align-items: start;
+}
+
+.footer-column {
+    min-width: 0;
+}
+
+.footer-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-menu li {
+    margin-bottom: 0.4rem;
+}
+
+.footer-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.footer-menu a:hover,
+.footer-menu a:focus {
+    text-decoration: underline;
+}
+
+.site-footer .copyright {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 992px) {
+    .footer-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-columns {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
