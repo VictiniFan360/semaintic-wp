@@ -159,6 +159,22 @@ function semantic_wp_customize($wp_customize) {
             'section' => 'title_tagline',
         ]
     ));
+/* TopBar – Imagen de fondo */
+$wp_customize->add_setting('semantic_wp_topbar_bg', [
+    'default'           => '',
+    'sanitize_callback' => 'esc_url_raw',
+]);
+
+$wp_customize->add_control(
+    new WP_Customize_Image_Control(
+        $wp_customize,
+        'semantic_wp_topbar_bg',
+        [
+            'label'   => __('Imagen del TopBar', 'semantic-wp'),
+            'section' => 'title_tagline',
+        ]
+    )
+);
 
     /* Colores base */
     foreach ([
