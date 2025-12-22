@@ -63,7 +63,6 @@ function semantic_wp_footer_fallback($location) {
             'Cómo funciona este sitio' => get_permalink(get_page_by_path('como-funciona')),
             'Más info' => get_permalink(get_page_by_path('mas-info')),
             'Documentación' => get_permalink(get_page_by_path('documentacion')),
-            'Soporte' => get_permalink(get_page_by_path('soporte')),
             'Noticias' => get_permalink(get_page_by_path('noticias')),
         ],
         'footer_support' => [
@@ -72,7 +71,6 @@ function semantic_wp_footer_fallback($location) {
             'Advertencias' => get_permalink(get_page_by_path('advertencias')),
             'Consejos de seguridad' => get_permalink(get_page_by_path('seguridad')),
             'Accesibilidad' => get_permalink(get_page_by_path('accesibilidad')),
-            'Upgrade' => get_permalink(get_page_by_path('upgrade')),
         ],
         'footer_collab' => [
             'Colaborá' => get_permalink(get_page_by_path('colabora')),
@@ -80,7 +78,6 @@ function semantic_wp_footer_fallback($location) {
             'Traducir' => get_permalink(get_page_by_path('traducir')),
             'Código fuente' => get_permalink(get_page_by_path('codigo-fuente')),
             'GitHub' => 'https://github.com/Tom-Proyect-Revivial',
-            'Donar' => get_permalink(get_page_by_path('donar')),
         ],
         'footer_about' => [
             'Contacto' => get_permalink(get_page_by_path('contacto')),
@@ -89,7 +86,6 @@ function semantic_wp_footer_fallback($location) {
             'Seguidores' => get_permalink(get_page_by_path('seguidores')),
             'Código de conducta' => get_permalink(get_page_by_path('codigo-de-conducta')),
             'Licencia' => get_permalink(get_page_by_path('licencia')),
-            'Jobs' => get_permalink(get_page_by_path('jobs')),
         ],
     ];
 
