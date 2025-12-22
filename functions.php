@@ -69,7 +69,6 @@ function semantic_wp_footer_fallback($location) {
             'FAQs' => get_permalink(get_page_by_path('faqs')),
             'Problemas conocidos' => get_permalink(get_page_by_path('problemas-conocidos')),
             'Advertencias' => get_permalink(get_page_by_path('advertencias')),
-            'Consejos de seguridad' => get_permalink(get_page_by_path('seguridad')),
             'Accesibilidad' => get_permalink(get_page_by_path('accesibilidad')),
         ],
         'footer_collab' => [
