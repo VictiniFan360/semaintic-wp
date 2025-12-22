@@ -81,7 +81,6 @@ function semantic_wp_footer_fallback($location) {
             'Contacto' => get_permalink(get_page_by_path('contacto')),
             'Misión y valores' => get_permalink(get_page_by_path('mision-valores')),
             'Contrato social' => get_permalink(get_page_by_path('contrato-social')),
-            'Seguidores' => get_permalink(get_page_by_path('seguidores')),
             'Código de conducta' => get_permalink(get_page_by_path('codigo-de-conducta')),
             'Licencia' => get_permalink(get_page_by_path('licencia')),
         ],
