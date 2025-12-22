@@ -52,7 +52,7 @@ function semantic_wp_widgets() {
 }
 add_action('widgets_init', 'semantic_wp_widgets');
 
-/* --------------------------------------------------
+/* --------------------------------------------------/
  * Footer fallback
  * -------------------------------------------------- */
 function semantic_wp_footer_fallback($location) {
@@ -61,7 +61,6 @@ function semantic_wp_footer_fallback($location) {
         'footer_general' => [
             'Inicio' => home_url('/'),
             'Cómo funciona este sitio' => get_permalink(get_page_by_path('como-funciona')),
-            'Más info' => get_permalink(get_page_by_path('mas-info')),
             'Documentación' => get_permalink(get_page_by_path('documentacion')),
             'Noticias' => get_permalink(get_page_by_path('noticias')),
         ],
